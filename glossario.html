@@ -62,14 +62,20 @@
         }
         .busca input {
             padding: 10px;
-            width: 300px;
+            width: 100%;
+            max-width: 300px;
             border: 1px solid #007BFF;
             border-radius: 5px;
             font-size: 1em;
         }
+        .busca .botoes {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
         .busca button {
             padding: 10px 20px;
-            margin-left: 10px;
             border: none;
             border-radius: 5px;
             background-color: #007BFF;
@@ -82,11 +88,64 @@
         }
         .resultado-busca {
             margin-top: 20px;
+            margin-bottom: 20px; /* Espaçamento adicional */
             padding: 20px;
             border: 1px solid #007BFF;
             border-radius: 5px;
             background-color: #f9f9f9;
             display: none;
+        }
+
+        /* Layout para telas maiores que 562px */
+        @media screen and (min-width: 563px) {
+            .busca {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+            }
+            .busca input {
+                margin: 0; /* Remove margem padrão */
+            }
+            .busca .botoes {
+                margin-top: 0; /* Remove margem superior */
+            }
+        }
+
+        /* Layout para telas menores que 562px */
+        @media screen and (max-width: 562px) {
+            .busca {
+                flex-direction: column;
+                align-items: center;
+            }
+            .busca input {
+                width: 90%; /* Ajuste da largura do campo de busca */
+            }
+            .busca .botoes {
+                margin-top: 10px; /* Espaçamento entre o campo de busca e os botões */
+            }
+        }
+
+        /* Estilos para o menu hambúrguer */
+        #burguer {
+            display: none; /* Escondido por padrão */
+            cursor: pointer;
+            font-size: 30px;
+            color: white;
+        }
+
+        @media screen and (max-width: 768px) {
+            #burguer {
+                display: block; /* Mostrar o ícone do menu em telas pequenas */
+            }
+            nav {
+                display: none; /* Esconder o menu por padrão em telas pequenas */
+                flex-direction: column;
+                width: 100%;
+            }
+            nav.active {
+                display: flex; /* Mostrar o menu quando ativo */
+            }
         }
     </style>
 </head>
@@ -108,14 +167,16 @@
     </header>
 
     <!-- Container do Glossário -->
-    <div class="glossario-container" style="margin-top: 70px;">
-        <h1>Glossário Espírita</h1><br>
+    <div class="glossario-container">
+        <h1 style="margin-top: 60px;">Glossário Espírita</h1><br>
 
         <!-- Campo de Busca -->
         <div class="busca">
             <input type="text" id="campo-busca" placeholder="Digite uma palavra...">
-            <button onclick="buscarTermo()">Buscar</button>
-            <button onclick="limparBusca()">Limpar</button>
+            <div class="botoes">
+                <button onclick="buscarTermo()">Buscar</button>
+                <button onclick="limparBusca()">Limpar</button>
+            </div>
         </div>
 
         <!-- Resultado da Busca -->
@@ -272,13 +333,12 @@
             document.getElementById('resultado-busca').innerHTML = '';
             document.getElementById('resultado-busca').style.display = 'none';
         }
+
+        // Função para alternar o menu em telas pequenas
+        function toggleMenu() {
+            const nav = document.getElementById('itens');
+            nav.classList.toggle('active');
+        }
     </script>
-    <script>
-    function toggleMenu() {
-        const nav = document.getElementById('itens');
-        nav.classList.toggle('active');
-    }
-    </script>
-    
 </body>
 </html>
