@@ -40,6 +40,10 @@
         .glossario-conteudo {
             display: none;
             margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #007BFF;
+            border-radius: 10px;
+            background-color: #f9f9f9;
         }
         .glossario-conteudo h2 {
             color: #333;
@@ -62,6 +66,19 @@
             border: 1px solid #007BFF;
             border-radius: 5px;
             font-size: 1em;
+        }
+        .busca button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        .busca button:hover {
+            background-color: #0056b3;
         }
         .resultado-busca {
             margin-top: 20px;
@@ -91,42 +108,28 @@
     </header>
 
     <!-- Container do Glossário -->
-    <div class="glossario-container">
-        <h1>Glossário Espírita de A a Z</h1>
+    <div class="glossario-container" style="margin-top: 70px;">
+        <h1>Glossário Espírita</h1><br>
 
         <!-- Campo de Busca -->
         <div class="busca">
             <input type="text" id="campo-busca" placeholder="Digite uma palavra...">
+            <button onclick="buscarTermo()">Buscar</button>
+            <button onclick="limparBusca()">Limpar</button>
         </div>
 
         <!-- Resultado da Busca -->
-        <div id="resultado-busca" class="resultado-busca"></div>
+        <div id="resultado-busca" class="resultado-busca"></div><br>
 
         <!-- Links de A a Z -->
         <div class="glossario-links" id="glossario-links">
             <!-- Links serão gerados automaticamente pelo JavaScript -->
         </div>
 
-        <!-- Conteúdo do Glossário -->
-        <div id="A" class="glossario-conteudo">
-            <h2>A</h2>
-            <p><strong>Allan Kardec:</strong> O codificador do Espiritismo.</p>
-            <p><strong>Anjo da Guarda:</strong> Um espírito protetor que nos acompanha.</p>
+        <!-- Área de Conteúdo do Glossário -->
+        <div id="area-conteudo" class="glossario-conteudo">
+            <!-- O conteúdo será exibido aqui -->
         </div>
-
-        <div id="B" class="glossario-conteudo">
-            <h2>B</h2>
-            <p><strong>Bem e Mal:</strong> Conceitos que definem nossas ações e suas consequências.</p>
-            <p><strong>Bicorporeidade:</strong> Capacidade de um espírito se manifestar em dois lugares ao mesmo tempo.</p>
-        </div>
-
-        <div id="C" class="glossario-conteudo">
-            <h2>C</h2>
-            <p><strong>Caridade:</strong> A prática do amor ao próximo.</p>
-            <p><strong>Causa e Efeito:</strong> Toda ação tem uma consequência.</p>
-        </div>
-
-        <!-- Adicione mais letras e termos conforme necessário -->
     </div>
 
     <footer>
@@ -145,38 +148,114 @@
             glossarioLinks.appendChild(link);
         }
 
+        // Conteúdo do Glossário
+        const glossario = {
+            A: [
+                { termo: "Allan Kardec", definicao: "O codificador do Espiritismo." },
+                { termo: "Anjo da Guarda", definicao: "Um espírito protetor que nos acompanha." }
+            ],
+            B: [
+                { termo: "Bem e Mal", definicao: "Conceitos que definem nossas ações e suas consequências." },
+                { termo: "Bicorporeidade", definicao: "Capacidade de um espírito se manifestar em dois lugares ao mesmo tempo." }
+            ],
+            C: [
+                { termo: "Caridade", definicao: "A prática do amor ao próximo." },
+                { termo: "Causa e Efeito", definicao: "Toda ação tem uma consequência." }
+            ],
+            D: [
+                { termo: "Desencarnação", definicao: "Quando o espírito deixa o corpo físico e volta para o mundo espiritual." },
+                { termo: "Doutrina Espírita", definicao: "O conjunto de ensinamentos codificados por Allan Kardec." }
+            ],
+            E: [
+                { termo: "Espírito", definicao: "A essência da gente, aquilo que a gente realmente é." },
+                { termo: "Evolução Espiritual", definicao: "O processo de aprendizado e crescimento que a gente vive através das reencarnações." }
+            ],
+            F: [
+                { termo: "Fé Raciocinada", definicao: "Acreditar, mas com entendimento." },
+                { termo: "Fluido Cósmico Universal", definicao: "A energia que permeia todo o universo." }
+            ],
+            G: [
+                { termo: "Guia Espiritual", definicao: "Um espírito mais evoluído que nos orienta e ajuda nas nossas jornadas." }
+            ],
+            H: [
+                { termo: "Hábeis", definicao: "Espíritos que já evoluíram bastante e ajudam os outros a crescer também." }
+            ],
+            I: [
+                { termo: "Influência Espiritual", definicao: "A energia que os espíritos podem transmitir pra gente, seja positiva ou negativa." }
+            ],
+            J: [
+                { termo: "Jesus", definicao: "No Espiritismo, Jesus é visto como um espírito super evoluído, um modelo de amor e caridade." }
+            ],
+            K: [
+                { termo: "Kardec, Allan", definicao: "O codificador do Espiritismo." }
+            ],
+            L: [
+                { termo: "Lei de Ação e Reação", definicao: "Outro nome para 'causa e efeito'. Toda ação tem uma consequência." },
+                { termo: "Livre-Arbítrio", definicao: "O nosso poder de escolha." }
+            ],
+            M: [
+                { termo: "Mediunidade", definicao: "A capacidade de se comunicar com os espíritos." },
+                { termo: "Mundo Espiritual", definicao: "O 'lugar' onde os espíritos vivem depois que desencarnam." }
+            ],
+            N: [
+                { termo: "Nível Vibratório", definicao: "A 'frequência' da nossa energia." }
+            ],
+            O: [
+                { termo: "Obsessão", definicao: "Quando um espírito menos evoluído influencia negativamente alguém." },
+                { termo: "Obras Básicas", definicao: "Os livros fundamentais do Espiritismo, escritos por Allan Kardec." }
+            ],
+            P: [
+                { termo: "Passe", definicao: "Uma energia boa que os médiuns passam pra gente, tipo uma 'recarga espiritual'." },
+                { termo: "Perispírito", definicao: "O 'corpo' do espírito." }
+            ],
+            R: [
+                { termo: "Reencarnação", definicao: "A volta do espírito pra Terra em um novo corpo." },
+                { termo: "Reforma Íntima", definicao: "O processo de mudar a gente por dentro, deixando de lado os defeitos e cultivando virtudes." }
+            ],
+            S: [
+                { termo: "Sintonia", definicao: "A conexão entre espíritos." },
+                { termo: "Socorro Espiritual", definicao: "A ajuda que os espíritos mais evoluídos dão pra gente." }
+            ],
+            T: [
+                { termo: "Transição Planetária", definicao: "A mudança da Terra pra um planeta de regeneração." }
+            ],
+            V: [
+                { termo: "Vibração", definicao: "A energia que a gente emite através dos pensamentos, palavras e ações." }
+            ]
+        };
+
         // Mostrar conteúdo ao clicar em uma letra
         function mostrarConteudo(letra) {
-            const conteudos = document.querySelectorAll('.glossario-conteudo');
-            conteudos.forEach(conteudo => {
-                conteudo.style.display = 'none';
+            const areaConteudo = document.getElementById('area-conteudo');
+            const termos = glossario[letra] || [];
+
+            let conteudoHTML = `<h2>${letra}</h2>`;
+            termos.forEach(termo => {
+                conteudoHTML += `<p><strong>${termo.termo}:</strong> ${termo.definicao}</p>`;
             });
-            const conteudoSelecionado = document.getElementById(letra);
-            if (conteudoSelecionado) {
-                conteudoSelecionado.style.display = 'block';
-            }
+
+            areaConteudo.innerHTML = conteudoHTML;
+            areaConteudo.style.display = 'block';
         }
 
         // Função de busca
-        const campoBusca = document.getElementById('campo-busca');
-        const resultadoBusca = document.getElementById('resultado-busca');
-
-        campoBusca.addEventListener('input', () => {
-            const termo = campoBusca.value.trim().toLowerCase();
+        function buscarTermo() {
+            const termo = document.getElementById('campo-busca').value.trim().toLowerCase();
+            const resultadoBusca = document.getElementById('resultado-busca');
             resultadoBusca.innerHTML = '';
             resultadoBusca.style.display = 'none';
 
             if (termo) {
-                const conteudos = document.querySelectorAll('.glossario-conteudo p');
                 let encontrado = false;
 
-                conteudos.forEach(conteudo => {
-                    const texto = conteudo.textContent.toLowerCase();
-                    if (texto.includes(termo)) {
-                        resultadoBusca.innerHTML += `<p>${conteudo.innerHTML}</p>`;
-                        encontrado = true;
-                    }
-                });
+                for (const letra in glossario) {
+                    glossario[letra].forEach(item => {
+                        if (item.termo.toLowerCase().includes(termo) || item.definicao.toLowerCase().includes(termo)) {
+                            resultadoBusca.innerHTML += `<p><strong>${item.termo}:</strong> ${item.definicao}</p>`;
+                            encontrado = true;
+                        }
+                    });
+                }
 
                 if (encontrado) {
                     resultadoBusca.style.display = 'block';
@@ -185,13 +264,21 @@
                     resultadoBusca.style.display = 'block';
                 }
             }
-        });
-    </script>
-    <script>
-        function toggleMenu() {
-            const nav = document.getElementById('itens');
-            nav.classList.toggle('active');
+        }
+
+        // Função para limpar a busca
+        function limparBusca() {
+            document.getElementById('campo-busca').value = '';
+            document.getElementById('resultado-busca').innerHTML = '';
+            document.getElementById('resultado-busca').style.display = 'none';
         }
     </script>
+    <script>
+    function toggleMenu() {
+        const nav = document.getElementById('itens');
+        nav.classList.toggle('active');
+    }
+    </script>
+    
 </body>
 </html>
