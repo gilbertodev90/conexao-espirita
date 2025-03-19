@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conexão Espírita</title>
+    <link rel="shortcut icon" href="imagens/aWdQjPv2.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css"> <!-- Seu CSS global -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        /* Estilos específicos para o glossário */
+        .glossario-container {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        .glossario-container h1 {
+            text-align: center;
+            color: #333;
+        }
+        .glossario-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .glossario-links a {
+            text-decoration: none;
+            color: #007BFF;
+            font-size: 1.2em;
+            padding: 5px 10px;
+            border: 1px solid #007BFF;
+            border-radius: 5px;
+        }
+        .glossario-links a:hover {
+            background-color: #007BFF;
+            color: white;
+        }
+        .glossario-conteudo {
+            display: none;
+            margin-top: 20px;
+        }
+        .glossario-conteudo h2 {
+            color: #333;
+            border-bottom: 2px solid #007BFF;
+            padding-bottom: 5px;
+        }
+        .glossario-conteudo p {
+            margin: 10px 0;
+        }
+        .mostrar {
+            display: block;
+        }
+        .busca {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .busca input {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #007BFF;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .resultado-busca {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #007BFF;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img id="logo" src="imagens/conexao-espirita-logo.png" alt="Logo Conexão Espírita">
+        <span id="burguer" class="material-icons" onclick="toggleMenu()">menu</span>
+        <nav id="itens">
+            <a href="index.html">Home</a>
+            <a href="introducao-espiritismo.html">Introdução ao Espiritismo</a>
+            <a href="#">Livros e Obras Fundamentais</a>
+            <a href="#">Mediunidade</a>
+            <a href="#">Passes e Tratamentos Espirituais</a>
+            <a href="#">Evangelho no Lar</a>
+            <a href="#">Caridade e Ação Social</a>
+            <a href="#">Notícias e Eventos</a>
+            <a href="#">Fórum da Comunidade</a>
+        </nav>
+    </header>
+
+    <!-- Container do Glossário -->
+    <div class="glossario-container">
+        <h1>Glossário Espírita de A a Z</h1>
+
+        <!-- Campo de Busca -->
+        <div class="busca">
+            <input type="text" id="campo-busca" placeholder="Digite uma palavra...">
+        </div>
+
+        <!-- Resultado da Busca -->
+        <div id="resultado-busca" class="resultado-busca"></div>
+
+        <!-- Links de A a Z -->
+        <div class="glossario-links" id="glossario-links">
+            <!-- Links serão gerados automaticamente pelo JavaScript -->
+        </div>
+
+        <!-- Conteúdo do Glossário -->
+        <div id="A" class="glossario-conteudo">
+            <h2>A</h2>
+            <p><strong>Allan Kardec:</strong> O codificador do Espiritismo.</p>
+            <p><strong>Anjo da Guarda:</strong> Um espírito protetor que nos acompanha.</p>
+        </div>
+
+        <div id="B" class="glossario-conteudo">
+            <h2>B</h2>
+            <p><strong>Bem e Mal:</strong> Conceitos que definem nossas ações e suas consequências.</p>
+            <p><strong>Bicorporeidade:</strong> Capacidade de um espírito se manifestar em dois lugares ao mesmo tempo.</p>
+        </div>
+
+        <div id="C" class="glossario-conteudo">
+            <h2>C</h2>
+            <p><strong>Caridade:</strong> A prática do amor ao próximo.</p>
+            <p><strong>Causa e Efeito:</strong> Toda ação tem uma consequência.</p>
+        </div>
+
+        <!-- Adicione mais letras e termos conforme necessário -->
+    </div>
+
+    <footer>
+        <p>&copy; Site criado por <a href="https://github.com/GilbertoDev90" target="_blank" rel="external">Gilberto Lima</a>.</p>
+    </footer>
+
+    <script>
+        // Gerar links de A a Z
+        const glossarioLinks = document.getElementById('glossario-links');
+        for (let i = 65; i <= 90; i++) {
+            const letra = String.fromCharCode(i);
+            const link = document.createElement('a');
+            link.href = `#${letra}`;
+            link.textContent = letra;
+            link.onclick = () => mostrarConteudo(letra);
+            glossarioLinks.appendChild(link);
+        }
+
+        // Mostrar conteúdo ao clicar em uma letra
+        function mostrarConteudo(letra) {
+            const conteudos = document.querySelectorAll('.glossario-conteudo');
+            conteudos.forEach(conteudo => {
+                conteudo.style.display = 'none';
+            });
+            const conteudoSelecionado = document.getElementById(letra);
+            if (conteudoSelecionado) {
+                conteudoSelecionado.style.display = 'block';
+            }
+        }
+
+        // Função de busca
+        const campoBusca = document.getElementById('campo-busca');
+        const resultadoBusca = document.getElementById('resultado-busca');
+
+        campoBusca.addEventListener('input', () => {
+            const termo = campoBusca.value.trim().toLowerCase();
+            resultadoBusca.innerHTML = '';
+            resultadoBusca.style.display = 'none';
+
+            if (termo) {
+                const conteudos = document.querySelectorAll('.glossario-conteudo p');
+                let encontrado = false;
+
+                conteudos.forEach(conteudo => {
+                    const texto = conteudo.textContent.toLowerCase();
+                    if (texto.includes(termo)) {
+                        resultadoBusca.innerHTML += `<p>${conteudo.innerHTML}</p>`;
+                        encontrado = true;
+                    }
+                });
+
+                if (encontrado) {
+                    resultadoBusca.style.display = 'block';
+                } else {
+                    resultadoBusca.innerHTML = '<p>Nenhum resultado encontrado.</p>';
+                    resultadoBusca.style.display = 'block';
+                }
+            }
+        });
+    </script>
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('itens');
+            nav.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
