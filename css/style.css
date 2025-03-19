@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+@import url('https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Sriracha&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sriracha&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -71,7 +74,7 @@ nav a:hover {
 
 /* Estilos do Main */
 main {
-    background-color: rgba(208, 204, 208, 0.400);
+    background-color: white;
     max-width: 70vw;
     margin: 0 auto;
     padding: 20px;
@@ -87,32 +90,100 @@ main h1 {
 main p {
     text-align: justify;
     text-indent: 40px;
-    line-height: 1.5em;
-    margin: 20px 0;
-    padding: 20px;
+    line-height: 1.8em;
+    margin: 20px 40px;
+    padding: 30px;
 }
 
-/* Estilos do Footer */
-footer {
-    background-color: black;
-    color: white;
+/* Fontes padrão */
+h1, h2, h3 {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+}
+
+p {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+}
+
+/* Estilos da seção #pensamento */
+#pensamento {
+    background-image: url('../imagens/girasol-800.jpg'); /* Substitua pelo caminho da sua imagem */
+    background-size: cover; /* Faz a imagem cobrir toda a seção */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    border-radius: 10px;
+    width: 90%; /* Largura responsiva */
+    margin: 30px auto; /* Centraliza a seção */
+    border: 1px solid rgba(0, 0, 0, 0.400);
+    display: flex; /* Ativa o flexbox */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    min-height: 400px; /* Define uma altura mínima para a seção */
+    position: relative; /* Permite o uso de overlay */
+    width: 800px;
+}
+
+/* Overlay para melhorar a legibilidade do texto */
+#pensamento .overlay {
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semi-transparente */
     padding: 20px;
+    border-radius: 10px;
     text-align: center;
-    width: 100%;
-    margin-top: auto; /* Empurra o footer para o final */
-}
-
-footer a {
-    font-weight: bolder;
     color: white;
-    text-decoration: none;
+    width: 100%; /* Largura responsiva */
+    min-width: 800px; /* Largura máxima do conteúdo */
+    margin: 0 auto; /* Centraliza o overlay */
 }
 
-footer a:hover {
-    text-decoration: underline;
+/* Ajustes para o texto dentro da seção */
+#pensamento h2 {
+    background-color: rgba(0, 0, 0, 0.400);
+    padding: 20px;
+    border-radius: 10px 10px 0px 0px;
+    color: white;
+    margin: 0; /* Remove margens fixas */
+    text-align: center;
+    width: 800px; /* Ocupa toda a largura do overlay */
+    margin-top: -20px;
+    margin-left: -20px;
 }
 
-/* Responsividade */
+#pensamento h3 {
+    color: white;
+    margin-top: 20px; /* Ajusta a margem superior */
+    text-align: center;
+}
+
+#pensamento p {
+    color: white;
+    text-align: center;
+    text-indent: 0;
+    font-weight: bold;
+    margin: 20px 0; /* Remove margens fixas e adiciona margem vertical */
+    line-height: 1.6;
+}
+
+/* Responsividade para telas intermediárias */
+@media screen and (max-width: 1024px) {
+    #pensamento {
+        width: 480px; /* Aumenta a largura em telas menores */
+        margin: 20px auto; /* Reduz a margem */
+    }
+
+    #pensamento .overlay {
+        padding: 15px; /* Reduz o padding */
+        min-width: 100px; /* Aumenta a largura do conteúdo */
+    }
+
+    #pensamento h2 {
+        width: 480px; /* Ocupa toda a largura do overlay */
+        margin-top: -16px;
+        margin-left: -16px;
+    }
+}
+
+/* Responsividade para telas pequenas (celulares) */
 @media screen and (max-width: 768px) {
     header {
         flex-flow: column nowrap;
@@ -145,6 +216,51 @@ footer a:hover {
 
     main {
         max-width: 90vw;
-        margin:  0 auto;
+        margin: 0 auto;
     }
+
+    main p {
+        margin: auto;
+    }
+
+    #pensamento {
+        width: 350px; /* Ocupa toda a largura */
+        margin: 10px auto; /* Reduz ainda mais a margem */
+        min-height: 300px; /* Reduz a altura mínima */
+    }
+
+    #pensamento .overlay {
+        padding: 10px; /* Reduz o padding */
+        width: 500px /* Ocupa toda a largura disponível */
+    }
+
+    #pensamento h2 {
+            width: 348px; /* Ocupa toda a largura do overlay */
+            margin-top: -10px;
+            margin-left: -10px;
+    }
+
+    #pensamento p {
+        font-size: 14px; /* Reduz o tamanho da fonte */
+    }
+}
+
+/* Estilos do Footer */
+footer {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    margin-top: auto; /* Empurra o footer para o final */
+}
+
+footer a {
+    font-weight: bolder;
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
