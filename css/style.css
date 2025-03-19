@@ -215,8 +215,8 @@ p {
     }
 
     main {
-        max-width: 90vw;
-        margin: 0 auto;
+        min-width: 97vw;
+        margin: 0px auto;
     }
 
     main p {
@@ -224,18 +224,18 @@ p {
     }
 
     #pensamento {
-        width: 350px; /* Ocupa toda a largura */
+        width: 320px; /* Ocupa toda a largura */
         margin: 10px auto; /* Reduz ainda mais a margem */
         min-height: 300px; /* Reduz a altura mínima */
     }
 
     #pensamento .overlay {
         padding: 10px; /* Reduz o padding */
-        width: 500px /* Ocupa toda a largura disponível */
+        width: 320px /* Ocupa toda a largura disponível */
     }
 
     #pensamento h2 {
-            width: 348px; /* Ocupa toda a largura do overlay */
+            width: 318px; /* Ocupa toda a largura do overlay */
             margin-top: -10px;
             margin-left: -10px;
     }
