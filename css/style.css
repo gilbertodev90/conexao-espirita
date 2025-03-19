@@ -164,6 +164,16 @@ p {
     line-height: 1.6;
 }
 
+div {
+    text-align: center;
+}
+
+div p{
+    text-align: justify;
+    width: auto;
+    line-height: 1.8em;
+}
+
 /* Responsividade para telas intermediárias */
 @media screen and (max-width: 1024px) {
     #pensamento {
